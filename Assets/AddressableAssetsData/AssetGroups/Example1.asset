@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Example1
+  m_EditorClassIdentifier: 
+  m_GroupName: Example1
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 7c3452e374d214acdb4a951954078b04
+  m_SerializeEntries:
+  - m_GUID: ee579f2dd4d4a4bfa81f6782f62f729e
+    m_Address: Example1Panel
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - panel
+    - example1
+  - m_GUID: c1174bcff2c4f4999834d49e7220386e
+    m_Address: MainFrame1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - example1
+  - m_GUID: 34030dcca7253491e8a748192691da5b
+    m_Address: MainFrame2
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - example1
+  - m_GUID: 5530479013e3748d98daad4247fb7cb0
+    m_Address: MainFrame3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - example1
+  - m_GUID: 8be7098a092d5477f993ec1b2ce828ff
+    m_Address: InventoryPanel
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - example1
+    - panel
+  - m_GUID: f0349126d9b37426aa9d16066e0c75a9
+    m_Address: EquipPanel
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - example1
+    - panel
+  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_Address: Example1Scene
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cba47437e7bbf4f2b946d2129d0bd3d2, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c4010c39e74454b8bb4c9a54e60179f9, type: 2}
+    - {fileID: 11400000, guid: 806d9fd00205b445ebd28bd636019cf3, type: 2}
