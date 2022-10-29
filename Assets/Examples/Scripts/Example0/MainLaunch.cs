@@ -1,4 +1,3 @@
-using System.Resources;
 using Suf.Application;
 using Suf.Base;
 using Suf.Resource;

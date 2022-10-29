@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09c03668ae464ad6a4223c36b04173a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveType: 2
+  moveType: 1
   mathfMoveType: 0
   characterControllerMoveType: 0
   rigidbodyMoveType: 0
@@ -632,6 +632,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
   m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2

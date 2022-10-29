@@ -1,6 +1,9 @@
 using System.Collections.Generic;
-using Suf.Factory;
+
 using UnityEngine;
+
+using Suf.Factory;
+using Suf.Utils;
 
 namespace Suf.Pool
 {
@@ -31,7 +34,7 @@ namespace Suf.Pool
 		{
 			if (HasBeenPrewarmed)
 			{
-				Debug.LogWarning($"Pool {name} has already been prewarmed.");
+				LogUtils.Warn($"Pool {name} has already been prewarmed.");
 				return;
 			}
 			for (int i = 0; i < num; i++)

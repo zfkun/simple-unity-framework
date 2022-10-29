@@ -53,7 +53,7 @@ namespace Suf.Pool
 
             if (m_IsPrewarm[key])
             {
-                Debug.LogWarning($"Pool {name} with key {key} has already been prewarmed.");
+                LogUtils.Warn($"Pool {name} with key {key} has already been prewarmed.");
                 return;
             }
 

@@ -1,3 +1,4 @@
+using Suf.Utils;
 using UnityEngine;
 
 namespace Suf.Base
@@ -47,7 +48,7 @@ namespace Suf.Base
 
         public virtual void Init()
         {
-            Debug.Log($"[{name}] Init");
+            LogUtils.Info($"[{name}] Init");
         }
     }
 }

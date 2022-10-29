@@ -1,3 +1,4 @@
+using Suf.Utils;
 using UnityEngine;
 
 /// <summary>
@@ -75,9 +76,9 @@ public class MoveAble : MonoBehaviour
             if (cc == null)
             {
                 cc = gameObject.AddComponent<CharacterController>();
-                cc.center = new Vector3(0f, 2.08f, 0);
+                cc.center = new Vector3(0f, 0f, 0);
                 cc.radius = 0.86f;
-                cc.height = 4.76f;
+                cc.height = 2.2f;
             }
         }
         else if (moveType == MoveType.Rigidbody)
@@ -115,7 +116,7 @@ public class MoveAble : MonoBehaviour
         var v = Input.GetAxis("Vertical");
         if (h == 0 && v == 0) return;
 
-        Debug.Log("axis: h=" + h + ", v=" + v);
+        LogUtils.InfoFormat("axis: h={0}, v={1}", h, v);
 
         // 1. 旋转
         var dir = new Vector3(h, 0, v);

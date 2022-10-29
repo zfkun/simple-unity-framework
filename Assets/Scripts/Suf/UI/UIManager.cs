@@ -122,21 +122,20 @@ namespace Suf.UI
         
         public void ShowUI(object key, Action<GameObject> callback, LayerType layer = LayerType.Back)
         {
-            if (_cache.ContainsKey(key.ToString()))
+            if (_cache.TryGetValue(key.ToString(), out var ui))
             {
                 LogUtils.InfoFormat("[UIManager] show panel from cache: layer={0}, key={1}", layer, key);
-                callback?.Invoke(_cache[key.ToString()]);
+                callback?.Invoke(ui);
                 return;
             }
 
             AddressableManager.Instance.Instantiate(key, _layers[layer], false, o =>
             {
-                Debug.Log("[UIManager] 显示面板, 资源加载且实例化完成=" + o);
+                LogUtils.Info("[UIManager] 显示面板, 资源加载且实例化完成=" + o);
                 o.name = key.ToString();
 
                 _cache[key.ToString()] = o;
-                
-                Debug.Log("[UIManager] 显示面板, 回调通知");
+
                 callback?.Invoke(o);
             });
         }

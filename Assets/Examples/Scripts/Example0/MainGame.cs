@@ -51,8 +51,8 @@ namespace Examples.Scripts.Example0
             var isNeedUpdateResources = false;
 
             // 初始化 Addressable
-            var initHandle = Addressables.InitializeAsync();
-            yield return initHandle;
+            // var initHandle = Addressables.InitializeAsync();
+            // yield return initHandle;
             LogUtils.Info("[MainGame] 开始检查更新");
 
             // 检查本地 Catalog 是否为最新版本
