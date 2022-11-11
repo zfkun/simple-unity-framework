@@ -27,7 +27,7 @@ public class InventoryPanelController: Panel
             _closeBtn.onClick.RemoveListener(OnCloseClick);
             _closeBtn = null;
             
-            UIManager.Instance.HidePanel("InventoryPanel", true);
+            PanelManager.Instance.HidePanel("InventoryPanel", true);
         }
     }
 }

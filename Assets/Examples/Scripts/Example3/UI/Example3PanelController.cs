@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Example3PanelController: Panel
 {
+    public new static readonly UIData data = new UIData("Example3Panel", LayerType.Middle);
+    
     private Transform _gridGroupA;
     private Transform _gridGroupB;
 

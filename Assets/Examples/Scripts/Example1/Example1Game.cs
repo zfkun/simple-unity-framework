@@ -83,6 +83,6 @@ public class Example1Game: UnitySingletonAuto<Example1Game>
         // TODO: 载入地图数据
 
         // TODO: 载入界面UI
-        UIManager.Instance.ShowPanel("Example1Panel", typeof(Example1PanelController));
+        PanelManager.Instance.ShowPanel<Example1PanelController>("Example1Panel");
     }
 }

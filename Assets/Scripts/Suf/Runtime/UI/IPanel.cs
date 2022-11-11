@@ -2,8 +2,10 @@ namespace Suf.UI
 {
     public interface IPanel
     {
-        public abstract void OnInit();
+        public abstract void OnInit(UIData data);
 
+        public abstract void OnOpen();
+        
         public abstract void OnClose();
 
         public abstract void OnPause();

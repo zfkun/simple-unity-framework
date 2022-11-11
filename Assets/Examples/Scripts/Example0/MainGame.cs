@@ -40,7 +40,7 @@ namespace Examples.Scripts.Example0
         {
             LogUtils.Info("[MainGame] 进入游戏");
 
-            UIManager.Instance.ShowPanel("Example0Panel", typeof(Example0PanelController));
+            PanelManager.Instance.ShowPanel<Example0PanelController>("Example0Panel");
             // var panel = UIManager.Instance.ShowUI("Example0Panel");
             // panel.AddComponent<Example0PanelController>();
         }

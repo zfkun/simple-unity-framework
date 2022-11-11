@@ -23,7 +23,7 @@ public class EquipPanelController : Panel
             m_CloseBtn.onClick.RemoveListener(OnCloseClick);
             m_CloseBtn = null;
             
-            UIManager.Instance.HidePanel("EquipPanel");
+            PanelManager.Instance.HidePanel("EquipPanel");
         }
     }
 }

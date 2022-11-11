@@ -12,6 +12,6 @@ public class Example3Game : UnitySingletonAuto<Example3Game>
 
     private void EnterGame()
     {
-        UIManager.Instance.ShowPanel("Example3Panel", typeof(Example3PanelController));
+        PanelManager.Instance.ShowPanel<Example3PanelController>("Example3Panel");
     }
 }

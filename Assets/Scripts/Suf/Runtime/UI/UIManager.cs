@@ -14,6 +14,7 @@ namespace Suf.UI
         private GameObject _root;
         private Dictionary<LayerType, Transform> _layers;
         private Dictionary<string, GameObject> _cache;
+        // private Dictionary<LayerType, Stack<Panel>> _panels;
 
         public GameObject root => _root;
         public Transform backLayer => _layers?[LayerType.Back];
@@ -64,59 +65,91 @@ namespace Suf.UI
             }
 
             _cache = new Dictionary<string, GameObject>();
+
+            // _panels = new Dictionary<LayerType, Stack<Panel>>
+            // {
+            //     [LayerType.Back] = new Stack<Panel>(),
+            //     [LayerType.Middle] = new Stack<Panel>(),
+            //     [LayerType.Front] = new Stack<Panel>(),
+            //     [LayerType.System] = new Stack<Panel>(),
+            // };
         }
-
-        #region 面板视图
-
-        public Panel ShowPanel(string key, Type controller, LayerType layer = LayerType.Back)
-        {
-            var obj = ShowUI(key, layer);
-            if (obj != null)
-            {
-                var panel = obj.GetComponent(controller);
-                if (panel == null)
-                {
-                    panel = obj.AddComponent(controller);
-                }
-
-                return (Panel) panel;
-            }
-
-            return null;
-        }
-
-        public void ShowPanel(object key, Type controller, Action<Panel> callback, LayerType layer = LayerType.Back)
-        {
-            ShowUI(key, o => { callback((Panel)o.AddComponent(controller)); }, layer);
-        }
-
-        public bool HidePanel(string key, bool release = false)
-        {
-            var p = HideUI(key);
-            if (p == null) return false;
-
-            if (release)
-            {
-                _cache.Remove(key);
-
-                // 由 Addressables 直接实例化的资源, 必须由 Addressables 释放
-                LogUtils.InfoFormat("[UIManager] 释放UI资源: key={0}", key);
-                var ok = AddressableManager.Instance.Release(p);
-                LogUtils.InfoFormat("[UIManager] 释放结果: key={0}, ok={1}", key, ok);
-
-                // // 手工实例化的资源, 手工释放
-                // Destroy(p);
-
-                return ok;
-            }
-
-            return true;
-        }
-
-        #endregion
-
 
         
+        // #region 面板视图
+        //
+        // public T ShowPanel<T>(string key, LayerType layer = LayerType.Back) where T: Panel
+        // {
+        //     var obj = ShowUI(key, layer);
+        //     if (obj != null)
+        //     {
+        //         if (!obj.TryGetComponent<T>(out var panel))
+        //         {
+        //             panel = obj.AddComponent<T>();
+        //             panel.OnInit();
+        //
+        //             if (!_panels[layer].Contains(panel)) _panels[layer].Push(panel);
+        //         }
+        //         
+        //         panel.OnOpen();
+        //
+        //         return panel;
+        //     }
+        //
+        //     return null;
+        // }
+        //
+        // public void ShowPanel<T>(object key, Action<T> callback, LayerType layer = LayerType.Back) where T : Panel
+        // {
+        //     ShowUI(key, o =>
+        //     {
+        //         if (!o.TryGetComponent<T>(out var panel))
+        //         {
+        //             panel = o.AddComponent<T>();
+        //             panel.OnInit();
+        //             
+        //             if (!_panels[layer].Contains(panel)) _panels[layer].Push(panel);
+        //         }
+        //         
+        //         panel.OnOpen();
+        //
+        //         callback(panel);
+        //     }, layer);
+        // }
+        //
+        // public bool HidePanel(string key, bool release = false)
+        // {
+        //     var p = HideUI(key);
+        //     if (p == null) return false;
+        //
+        //     if (p.TryGetComponent<Panel>(out var panel))
+        //     {
+        //         panel.OnClose();
+        //         
+        //         _panels[]
+        //     }
+        //
+        //     if (release)
+        //     {
+        //         _cache.Remove(key);
+        //
+        //         // 由 Addressables 直接实例化的资源, 必须由 Addressables 释放
+        //         LogUtils.InfoFormat("[UIManager] 释放UI资源: key={0}", key);
+        //         var ok = AddressableManager.Instance.Release(p);
+        //         LogUtils.InfoFormat("[UIManager] 释放结果: key={0}, ok={1}", key, ok);
+        //
+        //         // // 手工实例化的资源, 手工释放
+        //         // Destroy(p);
+        //
+        //         return ok;
+        //     }
+        //
+        //     return true;
+        // }
+        //
+        // #endregion
+
+
         
         #region 通用
         
@@ -172,7 +205,26 @@ namespace Suf.UI
             LogUtils.ErrorFormat("[UIManager] 隐藏UI失败, 未找到: key={0}", key);
             return null;
         }
-        
+
+        public bool ReleaseUI(string key)
+        {
+            if (_cache.TryGetValue(key, out var ui))
+            {
+                _cache.Remove(key);
+
+                // 由 Addressables 直接实例化的资源, 必须由 Addressables 释放
+                var ok = AddressableManager.Instance.Release(ui);
+                LogUtils.InfoFormat("[UIManager] 释放UI资源: key={0}, ok={1}", key, ok);
+
+                // // 手工实例化的资源, 手工释放
+                // Destroy(p);
+
+                return ok;
+            }
+
+            return false;
+        }
+
         #endregion
     }
 }
