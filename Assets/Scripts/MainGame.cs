@@ -1,7 +1,7 @@
 using Suf.Base;
 using Suf.Utils;
 
-public class MainApp: UnitySingletonAuto<MainApp>
+public class MainGame: UnitySingletonAuto<MainGame>
 {
     
     public void GameStart()

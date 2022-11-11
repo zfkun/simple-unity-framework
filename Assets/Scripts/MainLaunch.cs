@@ -17,6 +17,6 @@ public class MainLaunch: UnitySingletonAuto<MainLaunch>
         
 
         // start game
-        MainApp.Instance.GameStart();
+        MainGame.Instance.GameStart();
     }
 }
